@@ -11,7 +11,45 @@
   <style rel = "stylesheet">
       .horas{
           font-color: blue;
+          font-size: 60px;
       }
+
+      .minutos{
+          font-color: blue;
+          font-size: 60px;
+      }
+      .segundos{
+          font-color: blue;
+          font-size: 60px;
+      }
+      .centesimos{
+          font-color: blue;
+          font-size: 60px;
+      }
+      .pontos{
+          font-color: blue;
+          font-size: 60px;
+      }
+
+      @font-face {
+    font-family: "Digital";
+    src: local(Digital), url(fonts/DS-DIGI.ttf);
+}
+
+
+
+p {
+    font-family: "digital"
+}
+
+#p2 {
+    font-weight: 600;
+}
+
+#p3 {
+    font-weight: 800;
+}
+
       </style>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -38,7 +76,7 @@ let c = 0;
 let reniciar = 0;
 let volta = 0;
 function iniciar(){
-   
+  $('#parar').html('Parar')
    let zerar = 0;
     intervalCentesimos = setInterval(function(){
        c += 1; 
@@ -83,6 +121,7 @@ function iniciar(){
         $(".minutos").html(String(m).padStart(2, "0"));
         $(".horas").html(String(h).padStart(2, "0"));
         $('table').find('tbody').find('tr').remove()
+        $('#parar').html('Parar')
     }
 
     function parcial(){
@@ -93,6 +132,7 @@ function iniciar(){
 
     function parar(){
         //reniciar = 1;
+        //alert('volta: ' + volta)
         clearInterval(intervalSegundos)
         clearInterval(intervalCentesimos)
         if(reniciar == 0){
@@ -113,16 +153,16 @@ function iniciar(){
 <div class="container">
   <h1>Cronômetro </h1>
   <p>
- <span class = "horas w3-text-blue w3-sans-serif">00</span>
-  <span>:</span>
+ <span class = "horas w3-text-blue">00</span>
+  <span class = "pontos w3-text-blue">:</span>
  <span class = "minutos w3-text-blue">00</span>
- <span>:</span>
- <span class = "segundos w3-text-blue w3-sans-serif">00</span>
- <span>:</span>
+ <span class = "pontos w3-text-blue">:</span>
+ <span class = "segundos w3-text-blue">00</span>
+ <span class = "pontos w3-text-blue">:</span>
  <span class = "centesimos w3-text-blue">00</span>
  <span></span>
 </p>
-<p>
+<p align = "center">
  <button type="button" class="btn btn-primary" onclick = "iniciar()">Inicar</button>
  <span></span>
  <button type="button" class="btn btn-info" onclick = "parcial()">Parcial</button>
